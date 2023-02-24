@@ -37,54 +37,28 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: [
-
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.orange),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(width: 70 ,height: 70,child: CircleAvatar(backgroundImage: AssetImage( 'assets/images/img.png')),),
-
-                  SizedBox(height: 10),
-                  
-                  Text("Yassin Elhadedy")
-                ],
-              ),
-            ),
-
-            ListTile(
-              leading: Icon(Icons.camera),
-              title: Text("Home"),
-              onTap: (){},
-            ),
-
-            ListTile(
-              leading: Icon(Icons.camera),
-              title: Text("Home"),
-              onTap: (){
-                Navigator.pop(context);
-              },
-            )
-
+    return DefaultTabController(length: 3, child:       Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+          bottom: TabBar(tabs:
+          [
+            Tab(icon: Icon(Icons.camera),text: "Camer",),
+            Tab(icon: Icon(Icons.save),text: "Camer",),
+            Tab(icon: Icon(Icons.cabin),text: "Camer",),
 
           ],
+          ),
         ),
-      ),
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: FadeInImage.assetNetwork(placeholder: 'assets/images/img.png', image: 'https://picsum.photos/250?image=9'),
-      ),
-    );
+
+        body:TabBarView(children: [
+          Tab(icon: Icon(Icons.camera),text: "Camer",),
+          Tab(icon: Icon(Icons.save),text: "Camer",),
+          Tab(icon: Icon(Icons.cabin),text: "Camer",),
+        ],)
+    ));
+      
+
   }
 }
