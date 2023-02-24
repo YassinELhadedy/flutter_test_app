@@ -36,25 +36,49 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    var choices = <Choice>[Choice("Bicycle", Icons.bike_scooter), Choice("car", Icons.car_crash),Choice("Bus", Icons.bus_alert)];
 
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.orange),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(width: 70 ,height: 70,child: CircleAvatar(backgroundImage: AssetImage( 'assets/images/img.png')),),
+
+                  SizedBox(height: 10),
+                  
+                  Text("Yassin Elhadedy")
+                ],
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.camera),
+              title: Text("Home"),
+              onTap: (){},
+            ),
+
+            ListTile(
+              leading: Icon(Icons.camera),
+              title: Text("Home"),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            )
+
+
+          ],
+        ),
+      ),
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(choices[0].icon)),
-          IconButton(onPressed: (){}, icon: Icon(choices[1].icon)),
-          IconButton(onPressed: (){}, icon: Icon(choices[2].icon)),
-          PopupMenuButton(
-            itemBuilder: (context){return  choices.map((e) => PopupMenuItem(value: e,child: Text(e.title))).toList();},
-          onSelected: (Choice choice){
-            setState(() {
-
-            });
-          },)
-        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
