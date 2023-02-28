@@ -48,6 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var lis = ["das", "das", "sda", "ads"];
   int _counter = 0;
 
   void _incrementCounter() {
@@ -70,21 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: FadeInImage.assetNetwork(placeholder: 'assets/images/img.png', image: 'https://picsum.photos/250?image=9'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),
+        body: ListView.custom(
+            childrenDelegate: SliverChildListDelegate(
+                List.generate(
+                100,
+                (index) => Container(
+                  alignment:Alignment.center,
+
+                      height: 200,
+                      margin: EdgeInsets.only(bottom: 6),
+                      color: Colors.deepOrange,
+                      child:
+                          Row(children: [  Icon(Icons.cabin,),],mainAxisAlignment: MainAxisAlignment.center,)
+
+
+
+
+                    )))));
   }
 }
